@@ -10,5 +10,5 @@ import org.springframework.boot.runApplication
 class FnFCinemaApplication
 
 fun main(args: Array<String>) {
-	runApplication<FnFCinemaApplication>(*args)
+    runApplication<FnFCinemaApplication>(*args)
 }

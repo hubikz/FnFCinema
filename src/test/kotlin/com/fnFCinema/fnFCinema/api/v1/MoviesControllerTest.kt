@@ -3,9 +3,11 @@ package com.fnFCinema.fnFCinema.api.v1
 import com.fnFCinema.fnFCinema.api.request.ApiGatewayHeaders
 import com.fnFCinema.fnFCinema.api.v1.request.NewMovieRequest
 import com.fnFCinema.fnFCinema.extensions.toJson
+import com.fnFCinema.fnFCinema.repository.MovieRepository
 import com.fnFCinema.fnFCinema.stubs.ImdbResponseStubs
 import com.github.tomakehurst.wiremock.client.WireMock
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,18 +16,28 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.ResultActions
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureMockMvc(addFilters = false)
+@AutoConfigureMockMvc
 @AutoConfigureWireMock(port = 0)
 internal class MoviesControllerTest: ImdbResponseStubs {
 
     @Autowired
     lateinit var mockMvc: MockMvc
+
+    @Autowired
+    lateinit var movieRepository: MovieRepository
+
+    @BeforeEach
+    @AfterEach
+    fun cleanup() {
+        // clear DB
+        movieRepository.deleteAll()
+        WireMock.reset()
+    }
 
     @Test
     fun `Should allow add movie based on IMDB Id and get content from external API`() {

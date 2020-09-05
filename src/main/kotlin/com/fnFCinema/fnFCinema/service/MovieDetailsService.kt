@@ -26,7 +26,8 @@ class MovieDetailsService(val restTemplate: RestTemplate, val properties: MovieD
 }
 
 // TODO: do all mappings
-data class ImdbMovieResponse(@JsonProperty("Title") val title: String,
+data class ImdbMovieResponse(@JsonProperty("imdbID") val imdbId: String,
+                             @JsonProperty("Title") val title: String,
                              @JsonProperty("Genre") val genre: String,
                              @JsonProperty("Actors") val actors: String,
                              @JsonProperty("Ratings") val ratings: List<ImdbMovieRatingResponse>) {

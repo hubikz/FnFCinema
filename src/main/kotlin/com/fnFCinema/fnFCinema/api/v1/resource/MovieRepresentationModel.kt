@@ -1,5 +1,6 @@
 package com.fnFCinema.fnFCinema.api.v1.resource
 
+import com.fnFCinema.fnFCinema.model.MovieDocument
 import com.fnFCinema.fnFCinema.service.ImdbMovieResponse
 
 data class MovieRepresentationModel(val imdbId: String,
@@ -9,8 +10,8 @@ data class MovieRepresentationModel(val imdbId: String,
                                     val ratings: List<MovieRepresentationRatingModel>) {
 
     companion object {
-        fun from(imdbId: String, imdbMovieResponse: ImdbMovieResponse): MovieRepresentationModel {
-            return with(imdbMovieResponse) {
+        fun from(movieDocument: MovieDocument): MovieRepresentationModel {
+            return with(movieDocument) {
                 MovieRepresentationModel(imdbId, title, genre, actors, ratings.map { MovieRepresentationRatingModel.from(it) })
             }
         }
@@ -18,7 +19,7 @@ data class MovieRepresentationModel(val imdbId: String,
 
     data class MovieRepresentationRatingModel(val source: String, val value: String) {
         companion object {
-            fun from(rating: ImdbMovieResponse.ImdbMovieRatingResponse): MovieRepresentationRatingModel {
+            fun from(rating: MovieDocument.MovieRatingDocument): MovieRepresentationRatingModel {
                 return MovieRepresentationRatingModel(rating.source, rating.value)
             }
         }
