@@ -1,16 +1,13 @@
 package com.fnFCinema.fnFCinema.api.v1
 
-import com.fnFCinema.fnFCinema.service.MovieDetailsService
 import com.fnFCinema.fnFCinema.api.request.XUserRequest
 import com.fnFCinema.fnFCinema.api.v1.request.NewMovieRequest
+import com.fnFCinema.fnFCinema.api.v1.request.ShowingRequest
 import com.fnFCinema.fnFCinema.api.v1.resource.MovieRepresentationModel
+import com.fnFCinema.fnFCinema.api.v1.resource.ShowRepresentationModel
 import com.fnFCinema.fnFCinema.service.MovieService
 import io.swagger.v3.oas.annotations.Parameter
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 
@@ -21,5 +18,18 @@ class MoviesController(val movieService: MovieService) {
     @PostMapping("")
     fun addMovie(@Parameter(hidden = true) xUser: XUserRequest, @Valid @RequestBody newMovieRequest: NewMovieRequest): MovieRepresentationModel {
         return MovieRepresentationModel.from(movieService.create(newMovieRequest))
+    }
+
+    @PostMapping("/{movieId}/showings")
+    fun addShowing(@Parameter(hidden = true) xUser: XUserRequest,
+                   @PathVariable("movieId") movieId: String,
+                   @Valid @RequestBody showingRequest: ShowingRequest): ShowRepresentationModel {
+        return ShowRepresentationModel.from(movieService.addShowing(movieId, showingRequest))
+    }
+
+    @GetMapping("/{movieId}/showings")
+    fun getShowing(@PathVariable("movieId") movieId: String,
+                   @Valid @RequestBody showingRequest: ShowingRequest): ShowRepresentationModel {
+        return ShowRepresentationModel.from(movieService.addShowing(movieId, showingRequest))
     }
 }
