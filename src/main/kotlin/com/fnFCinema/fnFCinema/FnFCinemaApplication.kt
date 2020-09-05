@@ -1,4 +1,4 @@
-package com.FnFCinema.FnFCinema
+package com.fnFCinema.fnFCinema
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
