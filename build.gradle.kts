@@ -29,7 +29,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.springdoc:springdoc-openapi-ui:1.2.32")
+	implementation("org.springdoc:springdoc-openapi-ui:1.4.6")
+	implementation("org.springdoc:springdoc-openapi-kotlin:1.4.6")
 
 	kapt("org.springframework.boot:spring-boot-configuration-processor")
 

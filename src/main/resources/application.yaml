@@ -4,7 +4,16 @@ server:
 spring:
   data:
     mongodb:
-      uri: hasToBeSetInEnv
+      uri: mongodb://localhost:27017/fnf-test
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api/api-docs
+  paths-to-match: /api/v1/**
+  packages-to-exclude: com.fnFCinema.fnFCinema.api.request.XUserRequest
+  swagger-ui:
+    path: /api/swagger-ui.html
 
 app:
   movie-details-service:
