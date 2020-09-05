@@ -1,6 +1,6 @@
 package com.fnFCinema.fnFCinema.api.v1
 
-import com.fnFCinema.fnFCinema.MovieDetailsService
+import com.fnFCinema.fnFCinema.service.MovieDetailsService
 import com.fnFCinema.fnFCinema.api.request.XUserRequest
 import com.fnFCinema.fnFCinema.api.v1.request.NewMovieRequest
 import com.fnFCinema.fnFCinema.api.v1.resource.MovieRepresentationModel

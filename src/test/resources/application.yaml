@@ -1,0 +1,4 @@
+app:
+  movie-details-service:
+    domain: "http://localhost:${wiremock.server.port}"
+    api-key: f4k3k3Y

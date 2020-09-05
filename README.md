@@ -12,6 +12,9 @@ Customers are able to find when movie will be played and put review
 3. Production release based on build docker container where we passing secrets, passwords etc. from environment variables (e.g. k8s secrets)
 4. Application have health check endpoint
 
+## ADR
+1. Movies data are quire constant, taking in consideration IMDB API limits requests I decide to take data from there once on creation. In future "refresh" endpoint can be implemented.
+
 ## How to run tests
 
 1. Run MongoDB first

@@ -5,6 +5,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.10.RELEASE"
 	kotlin("jvm") version "1.3.72"
 	kotlin("plugin.spring") version "1.3.72"
+	kotlin("kapt") version "1.3.72"
 }
 
 group = "com.FnFCinema"
@@ -28,8 +29,11 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("org.springdoc:springdoc-openapi-ui:1.2.32")
+
+    kapt("org.springframework.boot:spring-boot-configuration-processor")
+
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner")
 }

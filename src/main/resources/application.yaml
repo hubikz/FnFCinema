@@ -1,0 +1,4 @@
+app:
+  movie-details-service:
+    domain: http://www.omdbapi.com/
+    apiKey: hasToBeSetInEnv
