@@ -27,17 +27,6 @@ import java.util.*
 @AutoConfigureWireMock(port = 0)
 internal class MoviesControllerTest : TestSetup() {
 
-    @Autowired
-    lateinit var movieRepository: MovieRepository
-
-    @BeforeEach
-    @AfterEach
-    fun cleanup() {
-        // clear DB
-        movieRepository.deleteAll()
-        WireMock.reset()
-    }
-
     @Test
     fun `Should allow add movie based on IMDB Id and get content from external API`() {
         val userId = "blazej"

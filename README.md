@@ -15,6 +15,7 @@ Customers are able to find when movie will be played and put review
 
 ## ADR
 1. Movies data are quite constant, taking in consideration IMDB API limits requests I decide to take data from there once on creation. In future "refresh" endpoint can be implemented.
+2. We don't use haetos to not add another complexity - focus on delivery
 
 ## How to run tests
 

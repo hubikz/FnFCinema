@@ -27,9 +27,10 @@ class MoviesController(val movieService: MovieService) {
         return ShowRepresentationModel.from(movieService.addShowing(movieId, showingRequest))
     }
 
-    @GetMapping("/{movieId}/showings")
-    fun getShowing(@PathVariable("movieId") movieId: String,
-                   @Valid @RequestBody showingRequest: ShowingRequest): ShowRepresentationModel {
-        return ShowRepresentationModel.from(movieService.addShowing(movieId, showingRequest))
+    @DeleteMapping("/{movieId}/showings/{showingId}")
+    fun deleteShowing(@Parameter(hidden = true) xUser: XUserRequest,
+                      @PathVariable("movieId") movieId: String,
+                      @PathVariable("showingId") showingId: String): ShowRepresentationModel {
+        TODO("Implementation needed")
     }
 }
