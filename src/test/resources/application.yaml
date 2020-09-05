@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/fnf-test
+
+app:
+  movie-details-service:
+    domain: "http://localhost:${wiremock.server.port}"
+    api-key: f4k3k3Y
