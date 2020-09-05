@@ -37,6 +37,13 @@ internal class MoviesControllerTest {
         )
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(MockMvcResultMatchers.jsonPath("$.imdbId").value(imdbId))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.title").value("The Fast and the Furious"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.genre").value("Action, Crime, Thriller"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.actors").value("Paul Walker, Vin Diesel, Michelle Rodriguez, Jordana Brewster"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.ratings.length()").value(3))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.ratings[0].source").value("Internet Movie Database"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.ratings[0].value").value("6.8/10"))
+                // TODO: add checking rest of ratings
     }
 
     fun `Should not allow add movie when user is not authorized`() {
